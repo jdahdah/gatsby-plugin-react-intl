@@ -2,7 +2,7 @@
 
 > If can, try theme [gatsby-theme-i18n](https://github.com/gatsbyjs/themes/tree/master/packages/gatsby-theme-i18n), this plugin will no longer be actively maintained
 
-> `gatsby-plugin-react-intl` has supported gatsby v3! Please upgrade `gatsby-plugin-react-intl` to `^3.0.0` to use it
+> `gatsby-plugin-react-intl` has support for Gatsby v3 and v4! Please upgrade `gatsby-plugin-react-intl` to `^4.0.0` to use it
 
 > For gatsby v2, please use `gatsby-plugin-react-intl@1.3.0`
 
@@ -15,6 +15,7 @@ Here are added features:
 - `ignoredPaths`: paths that you don't want to genereate locale pages, example: ["/dashboard/","/test/**"], string format is from micromatch https://github.com/micromatch/micromatch
 - `redirectDefaultLanguageToRoot`: option for use / as defaultLangauge root path. if your defaultLanguage is `ko`, when `redirectDefaultLanguageToRoot` is true, then it will not generate `/ko/xxx` pages, instead of `/xxx`
 - `fallbackLanguage`: option to fallback to the defined language instead of the `defaultLanguage` if the user langauge is not in the list
+- `removeOriginalPages`: option to remove original pages to prevent duplicate content (e.g. you will have `/en/xxx` and `/ko/xxx`, but not `/xxx`). It will preserve paths defined in `ignoredPaths`.
 
 The other feature just like [https://github.com/wiziple/gatsby-plugin-intl](https://github.com/wiziple/gatsby-plugin-intl)
 
@@ -76,6 +77,8 @@ plugins: [
       ignoredPaths: [],
       // option to fallback to the defined language instead of the `defaultLanguage` if the user langauge is not in the list
       fallbackLanguage: `en`,
+      // option to remove original pages to prevent duplicate content (e.g. you will have `/en/xxx` and `/ko/xxx`, but not `/xxx`). It will preserve paths defined in `ignoredPaths`.
+      removeOriginalPages: false,
     },
   },
 ]
@@ -149,13 +152,14 @@ If redirect option is `true`, `/` or `/page-2` will be redirected to the user's 
 
 ## Plugin Options
 
-| Option            | Type              | Description                                                                                                                                                                                    |
-| ----------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| path              | string            | language JSON resource path                                                                                                                                                                    |
-| languages         | string[]          | supported language keys                                                                                                                                                                        |
-| defaultLanguage   | string            | default language when visiting `/page` instead of `ko/page`                                                                                                                                    |
-| redirect          | boolean           | if the value is `true`, `/` or `/page-2` will be redirected to the user's preferred language router. e.g) `/ko` or `/ko/page-2`. Otherwise, the pages will render `defaultLangugage` language. |
-| redirectComponent | string (optional) | additional component file path to be rendered on with a redirection component for SEO.                                                                                                         |
+| Option              | Type               | Description                                                                                                                                                                                    |
+| ------------------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| path                | string             | language JSON resource path                                                                                                                                                                    |
+| languages           | string[]           | supported language keys                                                                                                                                                                        |
+| defaultLanguage     | string             | default language when visiting `/page` instead of `ko/page`                                                                                                                                    |
+| redirect            | boolean            | if the value is `true`, `/` or `/page-2` will be redirected to the user's preferred language router. e.g) `/ko` or `/ko/page-2`. Otherwise, the pages will render `defaultLangugage` language. |
+| redirectComponent   | string (optional)  | additional component file path to be rendered on with a redirection component for SEO.                                                                                                         |
+| removeOriginalPages | boolean (optional) | option to remove original pages to prevent duplicate content (e.g. you will have `/en/xxx` and `/ko/xxx`, but not `/xxx`). It will preserve paths defined in `ignoredPaths`.                   |
 
 ## Components
 

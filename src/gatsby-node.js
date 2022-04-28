@@ -53,6 +53,7 @@ exports.onCreatePage = async ({ page, actions }, pluginOptions) => {
     defaultLanguage = "en",
     fallbackLanguage = "",
     redirect = false,
+    removeOriginalPages = false,
     ignoredPaths = [],
     redirectDefaultLanguageToRoot = false,
   } = pluginOptions
@@ -100,9 +101,17 @@ exports.onCreatePage = async ({ page, actions }, pluginOptions) => {
     }
   }
 
-  const newPage = generatePage(false, defaultLanguage)
   deletePage(page)
-  createPage(newPage)
+
+  if (
+    redirectDefaultLanguageToRoot ||
+    isMatch(ignoredPaths, page.path) ||
+    page.path.match(/404/) ||
+    !removeOriginalPages
+  ) {
+    const newPage = generatePage(false, defaultLanguage)
+    createPage(newPage)
+  }
 
   languages.forEach(language => {
     // check ignore paths, if matched then don't generate locale page
