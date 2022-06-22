@@ -81,11 +81,26 @@ exports.onCreatePage = async ({ page, actions }, pluginOptions) => {
   const generatePage = (routed, language) => {
     const messages = getMessages(path, language)
     const newPath = routed ? `/${language}${page.path}` : page.path
-    return {
+
+    /*
+      Improve compatibility with Gatsby Content Sync. We need to ensure that
+      `ownerNodeId` is always unique, so we append the locale if it's a routed
+      page and not the default language.
+      See also https://www.gatsbyjs.com/docs/conceptual/content-sync/
+    */
+    const ownerNodeId = page.ownerNodeId
+      ? !routed || language === defaultLanguage
+        ? page.ownerNodeId
+        : `${page.ownerNodeId}${language}`
+      : undefined
+
+    const newPage = {
       ...page,
+      ownerNodeId,
       path: newPath,
       context: {
         ...page.context,
+        id: page.context.id || ownerNodeId, // preserve context.id if that's already set
         language,
         originalPath: page.path,
         intl: {
@@ -102,6 +117,7 @@ exports.onCreatePage = async ({ page, actions }, pluginOptions) => {
         },
       },
     }
+    return newPage
   }
 
   deletePage(page)
