@@ -2,7 +2,7 @@
 
 > If can, try theme [gatsby-theme-i18n](https://github.com/gatsbyjs/themes/tree/master/packages/gatsby-theme-i18n), this plugin will no longer be actively maintained
 
-> `gatsby-plugin-react-intl` has support for Gatsby v3 and v4! Please upgrade `gatsby-plugin-react-intl` to `^4.0.0` to use it
+> `gatsby-plugin-react-intl` has support for Gatsby v5! Please upgrade `gatsby-plugin-react-intl` to `^5.0.0` to use it
 
 > For gatsby v2, please use `gatsby-plugin-react-intl@1.3.0`
 

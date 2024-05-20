@@ -1,10 +1,21 @@
 {
   "name": "gatsby-plugin-react-intl",
   "description": "Gatsby plugin to add react-intl onto a site",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "author": "Daewoong Moon <wiziple@gmail.com>",
+  "contributors": [
+    {
+      "name": "Daewoong Moon",
+      "email": "wiziple@gmail.com",
+      "url": "https://github.com/wiziple"
+    },
+    {
+      "name": "Owen Young",
+      "url": "https://github.com/theowenyoung"
+    }
+  ],
   "bugs": {
-    "url": "https://github.com/theowenyoung/gatsby-plugin-intl"
+    "url": "https://github.com/jdahdah/gatsby-plugin-react-intl/issues"
   },
   "dependencies": {
     "@babel/runtime": "^7.17.9",
@@ -31,7 +42,7 @@
     "rimraf": "^3.0.2",
     "webpack": "^5.72.0"
   },
-  "homepage": "https://github.com/theowenyoung/gatsby-plugin-intl",
+  "homepage": "https://github.com/jdahdah/gatsby-plugin-react-intl",
   "keywords": [
     "gatsby",
     "gatsby-plugin",
@@ -43,9 +54,9 @@
   "license": "MIT",
   "main": "index.js",
   "peerDependencies": {
-    "gatsby": "^4.0.0"
+    "gatsby": "^5.0.0"
   },
-  "repository": "https://github.com/theowenyoung/gatsby-plugin-intl",
+  "repository": "https://github.com/jdahdah/gatsby-plugin-react-intl",
   "scripts": {
     "build": "babel src --out-dir . --ignore **/__tests__",
     "prepare": "cross-env NODE_ENV=production npm run build",
