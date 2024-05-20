@@ -13,11 +13,6 @@ const polyfillIntl = language => {
       require("@formatjs/intl-pluralrules/polyfill")
       require(`@formatjs/intl-pluralrules/locale-data/${locale}`)
     }
-
-    if (!Intl.RelativeTimeFormat) {
-      require("@formatjs/intl-relativetimeformat/polyfill")
-      require(`@formatjs/intl-relativetimeformat/locale-data/${locale}`)
-    }
   } catch (e) {
     throw new Error(`Cannot find react-intl/locale-data/${language}`)
   }

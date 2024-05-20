@@ -33,7 +33,7 @@ exports.onCreateWebpackConfig = ({ actions, plugins }, pluginOptions) => {
       }),
       new webpack.ContextReplacementPlugin(
         /@formatjs[/\\]intl-relativetimeformat[/\\]locale-data$/,
-        regex
+        /$^/
       ),
       new webpack.ContextReplacementPlugin(
         /@formatjs[/\\]intl-pluralrules[/\\]locale-data$/,
