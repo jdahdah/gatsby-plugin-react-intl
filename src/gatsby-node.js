@@ -36,6 +36,10 @@ exports.onCreateWebpackConfig = ({ actions, plugins }, pluginOptions) => {
         /$^/
       ),
       new webpack.ContextReplacementPlugin(
+        /@formatjs[/\\]intl-localematcher[/\\]lib$/,
+        /$^/
+      ),
+      new webpack.ContextReplacementPlugin(
         /@formatjs[/\\]intl-pluralrules[/\\]locale-data$/,
         regex
       ),
